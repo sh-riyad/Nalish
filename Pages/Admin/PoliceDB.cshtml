@@ -1,0 +1,36 @@
+﻿@page
+@model Nalish.Pages.Admin.IndexModel
+@{
+}
+<br />
+<h2>List of Polices</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Rank</th>
+            <th>Action Area</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.listPolice)  // looping throug police list
+        {
+            <tr>
+                <td>@user.id</td>  
+                <td>@user.name</td>
+                <td>@user.email</td>
+                <td>@user.phone</td>
+                <td>@user.rank</td>
+                <td>@user.area</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="/Admin/EditPolice?id=@user.id">Edit</a>
+                    <a class="btn btn-primary btn-sm" href="/Admin/DeletePolice?id=@user.id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
