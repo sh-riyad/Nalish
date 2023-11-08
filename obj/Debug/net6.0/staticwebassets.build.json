@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "R4YBb++OaUnllXeQn8JmXUakKdblUnJi3SnXy7iSFHk=",
+  "Hash": "+TiU+7hrFkbItvbAs8RMgByZdf85A12zR6d4FcJ0S3g=",
   "Source": "Nalish",
   "BasePath": "_content/Nalish",
   "Mode": "Default",
@@ -51,6 +51,23 @@
       "OriginalItemSpec": "C:\\Users\\saraw\\OneDrive\\Documents\\Visual Studio 2022\\Nalish\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Nalish.bundle.scp.css"
     },
     {
+      "Identity": "C:\\Users\\saraw\\OneDrive\\Documents\\Visual Studio 2022\\Nalish\\wwwroot\\css\\LogIn.css",
+      "SourceId": "Nalish",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\saraw\\OneDrive\\Documents\\Visual Studio 2022\\Nalish\\wwwroot\\",
+      "BasePath": "_content/Nalish",
+      "RelativePath": "css/LogIn.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\LogIn.css"
+    },
+    {
       "Identity": "C:\\Users\\saraw\\OneDrive\\Documents\\Visual Studio 2022\\Nalish\\wwwroot\\css\\site.css",
       "SourceId": "Nalish",
       "SourceType": "Discovered",
@@ -83,6 +100,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\saraw\\OneDrive\\Documents\\Visual Studio 2022\\Nalish\\wwwroot\\js\\LogIn.js",
+      "SourceId": "Nalish",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\saraw\\OneDrive\\Documents\\Visual Studio 2022\\Nalish\\wwwroot\\",
+      "BasePath": "_content/Nalish",
+      "RelativePath": "js/LogIn.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\LogIn.js"
     },
     {
       "Identity": "C:\\Users\\saraw\\OneDrive\\Documents\\Visual Studio 2022\\Nalish\\wwwroot\\js\\site.js",

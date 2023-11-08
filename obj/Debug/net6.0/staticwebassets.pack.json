@@ -5,12 +5,20 @@
       "PackagePath": "staticwebassets\\Nalish.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\saraw\\OneDrive\\Documents\\Visual Studio 2022\\Nalish\\wwwroot\\css\\LogIn.css",
+      "PackagePath": "staticwebassets\\css\\LogIn.css"
+    },
+    {
       "Id": "C:\\Users\\saraw\\OneDrive\\Documents\\Visual Studio 2022\\Nalish\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
       "Id": "C:\\Users\\saraw\\OneDrive\\Documents\\Visual Studio 2022\\Nalish\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\saraw\\OneDrive\\Documents\\Visual Studio 2022\\Nalish\\wwwroot\\js\\LogIn.js",
+      "PackagePath": "staticwebassets\\js\\LogIn.js"
     },
     {
       "Id": "C:\\Users\\saraw\\OneDrive\\Documents\\Visual Studio 2022\\Nalish\\wwwroot\\js\\site.js",
