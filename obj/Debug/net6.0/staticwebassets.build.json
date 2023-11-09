@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "+TiU+7hrFkbItvbAs8RMgByZdf85A12zR6d4FcJ0S3g=",
+  "Hash": "fKS82RvjwXr0tQZYvP7wfu9mioXJvGZ5K/PQMuShT/I=",
   "Source": "Nalish",
   "BasePath": "_content/Nalish",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\saraw\\OneDrive\\Documents\\Visual Studio 2022\\Nalish\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Nalish.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\saraw\\OneDrive\\Documents\\Visual Studio 2022\\Nalish\\wwwroot\\css\\Add.css",
+      "SourceId": "Nalish",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\saraw\\OneDrive\\Documents\\Visual Studio 2022\\Nalish\\wwwroot\\",
+      "BasePath": "_content/Nalish",
+      "RelativePath": "css/Add.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Add.css"
     },
     {
       "Identity": "C:\\Users\\saraw\\OneDrive\\Documents\\Visual Studio 2022\\Nalish\\wwwroot\\css\\LogIn.css",
