@@ -4,10 +4,10 @@ using System.Data.SqlClient;
 
 namespace Nalish.Pages.Admin
 {
-    public class IndexModel : PageModel
+    public class UserDBModel : PageModel
     {
         // sob users the information store krbe
-        public List<PoliceInfo> listPolice = new List<PoliceInfo>();
+        public List<UserInfo> listUser = new List<UserInfo>();
         public void OnGet()
         {
             try
@@ -18,48 +18,46 @@ namespace Nalish.Pages.Admin
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open(); //opening the connection
-                    string sql = "SELECT policeid,name,email,phone,gender,position FROM PoliceInfo"; // sql query for select data from database
+                    string sql = "SELECT userid,name,email,phone,gender FROM UserInfo"; // sql query for select data from database
 
                     // creating sql command to execude sql query
-                    using (SqlCommand command = new SqlCommand(sql, connection)) 
+                    using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         using (SqlDataReader reader = command.ExecuteReader()) // defining commnad for read data
                         {
-                            while(reader.Read()) //reading info from database
+                            while (reader.Read()) //reading info from database
                             {
-                                PoliceInfo policeInfo = new PoliceInfo();
-                                policeInfo.policeid = "" + reader.GetInt32(0);
-                                policeInfo.name = reader.GetString(1);
-                                policeInfo.email = reader.GetString(2);
-                                policeInfo.phone = reader.GetString(3);
-                                policeInfo.gender = reader.GetString(4);
-                                policeInfo.position = reader.GetString(5);
+                                UserInfo userInfo = new UserInfo();
+                                userInfo.userid = "" + reader.GetInt32(0);
+                                userInfo.name = reader.GetString(1);
+                                userInfo.email = reader.GetString(2);
+                                userInfo.phone = reader.GetString(3);
+                                userInfo.gender = reader.GetString(4);
+                                
 
-                                listPolice.Add(policeInfo); // add every police info into list
+                                listUser.Add(userInfo); // add every police info into list
                             }
                         }
                     }
                 }
             }
-            catch(Exception ex) 
+            catch (Exception ex)
             {
                 Console.WriteLine("Exception: " + ex.ToString());
             }
         }
     }
-    
-    
+
+
     // UsersInfo class user er information store krbe. single user er jnno
-    public class PoliceInfo
+    public class UserInfo
     {
-        public string policeid;
+        public string userid;
         public string name;
         public string username;
         public string email;
         public string phone;
         public string password;
-        public string confirm_password;
         public string gender;
-        public string position;
     }
 }

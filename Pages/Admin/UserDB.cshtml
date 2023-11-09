@@ -1,0 +1,29 @@
+﻿@page
+@model Nalish.Pages.Admin.UserDBModel
+@{
+}
+<br />
+<h2>List of Users</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Gender</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.listUser)  // looping throug police list
+        {
+            <tr>
+                <td>@user.userid</td>  
+                <td>@user.name</td>
+                <td>@user.email</td>
+                <td>@user.phone</td>
+                <td>@user.gender</td>
+            </tr>
+        }
+    </tbody>
+</table>

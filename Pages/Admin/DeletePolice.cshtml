@@ -3,7 +3,7 @@
 @{
     try
     {
-        string id = Request.Query["id"];
+        string policeid = Request.Query["policeid"];
 
         string connectionString = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=Nalish;Integrated Security=True";
 
@@ -12,12 +12,12 @@
         {
             connection.Open();
 
-            string sql = "DELETE FROM PoliceInfo WHERE id=@id";
+            string sql = "DELETE FROM PoliceInfo WHERE policeid=@policeid";
             using(SqlCommand command = new SqlCommand(sql, connection))
             {
                 // changing @id with id that we received from line 6
                 // changing for sql query
-                command.Parameters.AddWithValue("@id", id);
+                command.Parameters.AddWithValue("@policeid", policeid);
 
                 command.ExecuteNonQuery();
             }

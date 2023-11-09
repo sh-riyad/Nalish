@@ -13,7 +13,7 @@ namespace Nalish.Pages.Admin
         public string successMessage = "";
         public void OnGet()
         {
-            string id = Request.Query["id"];
+            string policeid = Request.Query["policeid"];
 
             try
             {
@@ -26,15 +26,15 @@ namespace Nalish.Pages.Admin
                     connection.Open();
 
                     // sql query for finding with with id
-                    string sql = "SELECT * FROM PoliceInfo WHERE id=@id";
+                    string sql = "SELECT * FROM PoliceInfo WHERE policeid=@policeid";
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
-                        command.Parameters.AddWithValue("@id", id);
+                        command.Parameters.AddWithValue("@policeid", policeid);
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
                             if (reader.Read())
                             {
-                                policeInfo.id = "" + reader.GetInt32(0);
+                                policeInfo.policeid = "" + reader.GetInt32(0);
                                 policeInfo.name = reader.GetString(1);
                                 policeInfo.username = reader.GetString(2);
                                 policeInfo.email = reader.GetString(3);
@@ -56,7 +56,7 @@ namespace Nalish.Pages.Admin
         }
         public void OnPost()
         {
-            policeInfo.id = Request.Form["id"];
+            policeInfo.policeid = Request.Form["policeid"];
             policeInfo.name = Request.Form["name"];
             policeInfo.username = Request.Form["username"];
             policeInfo.email = Request.Form["email"];
@@ -78,7 +78,7 @@ namespace Nalish.Pages.Admin
                 {
                     connection.Open();
                     string sql = "UPDATE PoliceInfo " +
-                        "SET name = @name, username=@username,email=@email,phone=@phone,password=@password,gender=@gender,position=@position WHERE id=@id";
+                        "SET name = @name, username=@username,email=@email,phone=@phone,password=@password,gender=@gender,position=@position WHERE policeid=@policeid";
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
 
@@ -89,7 +89,7 @@ namespace Nalish.Pages.Admin
                         command.Parameters.AddWithValue("@password", policeInfo.password);
                         command.Parameters.AddWithValue("@gender", policeInfo.gender);
                         command.Parameters.AddWithValue("@position", policeInfo.position);
-                        command.Parameters.AddWithValue("@id", policeInfo.id);
+                        command.Parameters.AddWithValue("@policeid", policeInfo.policeid);
 
                         command.ExecuteNonQuery();
                     }

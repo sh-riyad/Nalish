@@ -20,16 +20,16 @@
         @foreach (var user in Model.listPolice)  // looping throug police list
         {
             <tr>
-                <td>@user.id</td>  
+                <td>@user.policeid</td>
                 <td>@user.name</td>
                 <td>@user.email</td>
                 <td>@user.phone</td>
                 <td>@user.gender</td>
                 <td>@user.position</td>
                 <td>
-                    <a class="btn btn-primary btn-sm" href="/Admin/EditPolice?id=@user.id">Edit</a>
+                    <a class="btn btn-primary btn-sm" href="/Admin/EditPolice?policeid=@user.policeid">Edit</a>
                     <!--  -->
-                    <a class="btn btn-primary btn-sm" href="/Admin/DeletePolice?id=@user.id">Delete</a>
+                    <a class="btn btn-primary btn-sm" href="/Admin/DeletePolice?policeid=@user.policeid">Delete</a>
                     <!-- -->
                 </td>
             </tr>
