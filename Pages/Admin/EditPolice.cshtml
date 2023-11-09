@@ -16,35 +16,36 @@
         <div class="add_title">Update Police Information</div>
         <div class="add_content">
             <form class="add_form" method="POST">
+                <input type="hidden" name="id" value="@Model.policeInfo.id">
                 <div class="add_user-details">
                     <div class="add_input-box">
                         <span class="add_details">Full Name</span>
-                        <input class="add_input" type="text" placeholder="Enter your name" name="name" value="@Model.policeInfo.name" required>
+                        <input class="add_input" type="text" placeholder="Enter your name" name="name" value="@Model.policeInfo.name" >
                     </div>
                     <div class="add_input-box">
                         <span class="add_details">Username</span>
-                        <input class="add_input" type="text" placeholder="Enter your username" name="username" value="@Model.policeInfo.username" required>
+                        <input class="add_input" type="text" placeholder="Enter your username" name="username" value="@Model.policeInfo.username" >
                     </div>
                     <div class="add_input-box">
                         <span class="add_details">Email</span>
-                        <input class="add_input" type="text" placeholder="Enter your email" name="email" value="@Model.policeInfo.email" required>
+                        <input class="add_input" type="text" placeholder="Enter your email" name="email" value="@Model.policeInfo.email" >
                     </div>
                     <div class="add_input-box">
                         <span class="add_details">Phone Number</span>
-                        <input class="add_input" type="text" placeholder="Enter your number" name="phone" value="@Model.policeInfo.phone" required>
+                        <input class="add_input" type="text" placeholder="Enter your number" name="phone" value="@Model.policeInfo.phone" >
                     </div>
                     <div class="add_input-box">
                         <span class="add_details">Password</span>
-                        <input class="add_input" type="text" placeholder="Enter your password" name="password" value="@Model.policeInfo.password" required>
+                        <input class="add_input" type="password" placeholder="Enter your password" name="password" value="@Model.policeInfo.password">
                     </div>
                     <div class="add_input-box">
                         <span class="add_details">Confirm Password</span>
-                        <input class="add_input" type="text" placeholder="Confirm your password" name="confirm_password" value="@Model.policeInfo.confirm_password" required>
+                        <input class="add_input" type="password" placeholder="Confirm your password" name="confirm_password" value="@Model.policeInfo.confirm_password" >
                     </div>
                     <div class="add_input-box">
                         <span class="add_details">Gender</span>
-                        <select class="add_input" id="gender" name="gender" value="@Model.policeInfo.gender" required>
-                            <option value="" disabled selected hidden>Select Gender</option>
+                        <select class="add_input" id="gender" name="gender" value="@Model.policeInfo.gender" >
+                            <option value="" disabled selected hidden>@Model.policeInfo.gender</option>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                         </select>
@@ -52,7 +53,7 @@
                     <div class="add_input-box">
                         <span class="add_details">Select Position</span>
                         <select class="add_input" id="position" name="position" value="@Model.policeInfo.position">
-                            <option value="" disabled selected hidden>Select Position</option>
+                            <option value="" disabled selected hidden>@Model.policeInfo.position</option>
                             <option value="Inspector General">Inspector General</option>
                             <option value="Additional Inspector General">Additional Inspector General</option>
                             <option value="Deputy Inspector General">Deputy Inspector General</option>
