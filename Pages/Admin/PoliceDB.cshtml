@@ -11,8 +11,8 @@
             <th>Name</th>
             <th>Email</th>
             <th>Phone</th>
-            <th>Rank</th>
-            <th>Action Area</th>
+            <th>Gender</th>
+            <th>Position</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -24,11 +24,13 @@
                 <td>@user.name</td>
                 <td>@user.email</td>
                 <td>@user.phone</td>
-                <td>@user.rank</td>
-                <td>@user.area</td>
+                <td>@user.gender</td>
+                <td>@user.position</td>
                 <td>
                     <a class="btn btn-primary btn-sm" href="/Admin/EditPolice?id=@user.id">Edit</a>
+                    <!--  -->
                     <a class="btn btn-primary btn-sm" href="/Admin/DeletePolice?id=@user.id">Delete</a>
+                    <!-- -->
                 </td>
             </tr>
         }

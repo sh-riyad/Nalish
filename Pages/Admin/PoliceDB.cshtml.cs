@@ -18,7 +18,7 @@ namespace Nalish.Pages.Admin
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open(); //opening the connection
-                    string sql = "SELECT * FROM PoliceInfo"; // sql query for select data from database
+                    string sql = "SELECT id,name,email,phone,gender,position FROM PoliceInfo"; // sql query for select data from database
 
                     // creating sql command to execude sql query
                     using (SqlCommand command = new SqlCommand(sql, connection)) 
@@ -32,8 +32,8 @@ namespace Nalish.Pages.Admin
                                 policeInfo.name = reader.GetString(1);
                                 policeInfo.email = reader.GetString(2);
                                 policeInfo.phone = reader.GetString(3);
-                                policeInfo.rank = reader.GetString(4);
-                                policeInfo.area = reader.GetString(5);
+                                policeInfo.gender = reader.GetString(4);
+                                policeInfo.position = reader.GetString(5);
 
                                 listPolice.Add(policeInfo); // add every police info into list
                             }
@@ -54,9 +54,12 @@ namespace Nalish.Pages.Admin
     {
         public string id;
         public string name;
+        public string username;
         public string email;
         public string phone;
-        public string rank;
-        public string area;
+        public string password;
+        public string confirm_password;
+        public string gender;
+        public string position;
     }
 }

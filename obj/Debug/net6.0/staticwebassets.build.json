@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "fKS82RvjwXr0tQZYvP7wfu9mioXJvGZ5K/PQMuShT/I=",
+  "Hash": "59u/TS3+Y7sSnlzV2QS9NAOaTaSE2BTvk+FSDZnZTVU=",
   "Source": "Nalish",
   "BasePath": "_content/Nalish",
   "Mode": "Default",
@@ -51,12 +51,12 @@
       "OriginalItemSpec": "C:\\Users\\saraw\\OneDrive\\Documents\\Visual Studio 2022\\Nalish\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Nalish.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\saraw\\OneDrive\\Documents\\Visual Studio 2022\\Nalish\\wwwroot\\css\\Add.css",
+      "Identity": "C:\\Users\\saraw\\OneDrive\\Documents\\Visual Studio 2022\\Nalish\\wwwroot\\css\\AddPolice.css",
       "SourceId": "Nalish",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\saraw\\OneDrive\\Documents\\Visual Studio 2022\\Nalish\\wwwroot\\",
       "BasePath": "_content/Nalish",
-      "RelativePath": "css/Add.css",
+      "RelativePath": "css/AddPolice.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -65,7 +65,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\Add.css"
+      "OriginalItemSpec": "wwwroot\\css\\AddPolice.css"
     },
     {
       "Identity": "C:\\Users\\saraw\\OneDrive\\Documents\\Visual Studio 2022\\Nalish\\wwwroot\\css\\LogIn.css",

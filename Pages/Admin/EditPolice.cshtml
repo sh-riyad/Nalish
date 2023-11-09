@@ -2,9 +2,8 @@
 @model Nalish.Pages.Admin.EditModel
 @{
 }
-<br />
-<h2>Edit Police Information</h2>
 
+<link rel="stylesheet" href="~/css/AddPolice.css" />
 @if (Model.errorMessage.Length > 0)
 {
     <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -12,48 +11,77 @@
         <button type='button' class="btn-close" data-bs-dismiss='alert' aria-label="Close"></button>
     </div>
 }
-<form method="POST">
-    <input type="hidden" name="id" value="@Model.policeInfo.id">
-    <div class="row mb-3">
-        <label class="col-sm-3 col-form-label">Name</label>
-        <div class="col-sm-6">
-            <input type="text" class="form-control" name="name" value="@Model.policeInfo.name">
-        </div>
-    </div>
-    <div class="row mb-3">
-        <label class="col-sm-3 col-form-label">Email</label>
-        <div class="col-sm-6">
-            <input type="text" class="form-control" name="email" value="@Model.policeInfo.email">
-        </div>
-    </div>
-    <div class="row mb-3">
-        <label class="col-sm-3 col-form-label">Phone</label>
-        <div class="col-sm-6">
-            <input type="text" class="form-control" name="phone" value="@Model.policeInfo.phone">
-        </div>
-    </div>
-    <div class="row mb-3">
-        <label class="col-sm-3 col-form-label">Rank</label>
-        <div class="col-sm-6">
-            <input type="text" class="form-control" name="rank" value="@Model.policeInfo.rank">
-        </div>
-    </div>
-    <div class="row mb-3">
-        <label class="col-sm-3 col-form-label">Action Area</label>
-        <div class="col-sm-6">
-            <input type="text" class="form-control" name="area" value="@Model.policeInfo.area">
+<body>
+    <div class="add_container">
+        <div class="add_title">Update Police Information</div>
+        <div class="add_content">
+            <form class="add_form" method="POST">
+                <div class="add_user-details">
+                    <div class="add_input-box">
+                        <span class="add_details">Full Name</span>
+                        <input class="add_input" type="text" placeholder="Enter your name" name="name" value="@Model.policeInfo.name" required>
+                    </div>
+                    <div class="add_input-box">
+                        <span class="add_details">Username</span>
+                        <input class="add_input" type="text" placeholder="Enter your username" name="username" value="@Model.policeInfo.username" required>
+                    </div>
+                    <div class="add_input-box">
+                        <span class="add_details">Email</span>
+                        <input class="add_input" type="text" placeholder="Enter your email" name="email" value="@Model.policeInfo.email" required>
+                    </div>
+                    <div class="add_input-box">
+                        <span class="add_details">Phone Number</span>
+                        <input class="add_input" type="text" placeholder="Enter your number" name="phone" value="@Model.policeInfo.phone" required>
+                    </div>
+                    <div class="add_input-box">
+                        <span class="add_details">Password</span>
+                        <input class="add_input" type="text" placeholder="Enter your password" name="password" value="@Model.policeInfo.password" required>
+                    </div>
+                    <div class="add_input-box">
+                        <span class="add_details">Confirm Password</span>
+                        <input class="add_input" type="text" placeholder="Confirm your password" name="confirm_password" value="@Model.policeInfo.confirm_password" required>
+                    </div>
+                    <div class="add_input-box">
+                        <span class="add_details">Gender</span>
+                        <select class="add_input" id="gender" name="gender" value="@Model.policeInfo.gender" required>
+                            <option value="" disabled selected hidden>Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                    <div class="add_input-box">
+                        <span class="add_details">Select Position</span>
+                        <select class="add_input" id="position" name="position" value="@Model.policeInfo.position">
+                            <option value="" disabled selected hidden>Select Position</option>
+                            <option value="Inspector General">Inspector General</option>
+                            <option value="Additional Inspector General">Additional Inspector General</option>
+                            <option value="Deputy Inspector General">Deputy Inspector General</option>
+                            <option value="Additional Deputy Inspector General">Additional Deputy Inspector General</option>
+                            <option value="Superintendent">Superintendent</option>
+                            <option value="Additional Superintendent">Additional Superintendent</option>
+                            <option value="Senior Assistant Superintendent">Senior Assistant Superintendent</option>
+                            <option value="Assistant Superintendent">Assistant Superintendent</option>
+                        </select>
+                    </div>
+                </div>
+                @if (Model.successMessage.Length > 0)
+                {
+                    
+                        <div class="row mb-3">
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <strong>@Model.successMessage</strong>
+                            <button type='button' class="btn-close" data-bs-dismiss='alert' aria-label="Close"></button>
+                        </div>
+                    </div>
+                    
+                    
+                }
+                
+                <div class="add_button">
+                    <input class="add_input" type="submit" value="Register">
+                </div>
+            </form>
         </div>
     </div>
 
-
-
-    <div class="row mb-3">
-        <div class="offset-sm-3 col-sm-3 d-grid">
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-        <div class="col-sm-3 d-grid">
-            <a class="btn btn-outline-primary" href="/" role="button">Cancel</a>
-        </div>
-
-    </div>
-</form>
+</body>

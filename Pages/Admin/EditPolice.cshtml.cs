@@ -10,6 +10,7 @@ namespace Nalish.Pages.Admin
 
         public PoliceInfo policeInfo = new PoliceInfo();
         public string errorMessage = "";
+        public string successMessage = "";
         public void OnGet()
         {
             string id = Request.Query["id"];
@@ -35,10 +36,12 @@ namespace Nalish.Pages.Admin
                             {
                                 policeInfo.id = "" + reader.GetInt32(0);
                                 policeInfo.name = reader.GetString(1);
-                                policeInfo.email = reader.GetString(2);
-                                policeInfo.phone = reader.GetString(3);
-                                policeInfo.rank = reader.GetString(4);
-                                policeInfo.area = reader.GetString(5);
+                                policeInfo.username = reader.GetString(2);
+                                policeInfo.email = reader.GetString(3);
+                                policeInfo.phone = reader.GetString(4);
+                                policeInfo.password = reader.GetString(5);
+                                policeInfo.gender = reader.GetString(6);
+                                policeInfo.position = reader.GetString(7);
 
                             }
                         }
@@ -55,13 +58,15 @@ namespace Nalish.Pages.Admin
         {
             policeInfo.id = Request.Form["id"];
             policeInfo.name = Request.Form["name"];
+            policeInfo.username = Request.Form["username"];
             policeInfo.email = Request.Form["email"];
             policeInfo.phone = Request.Form["phone"];
-            policeInfo.rank = Request.Form["rank"];
-            policeInfo.area = Request.Form["area"];
+            policeInfo.password = Request.Form["password"];
+            policeInfo.gender = Request.Form["gender"];
+            policeInfo.position = Request.Form["position"];
 
             if (policeInfo.name.Length == 0 || policeInfo.email.Length == 0 ||
-                policeInfo.phone.Length != 11)
+                policeInfo.phone.Length == 0)
             {
                 errorMessage = "All the fields are required";
                 return;
@@ -73,15 +78,17 @@ namespace Nalish.Pages.Admin
                 {
                     connection.Open();
                     string sql = "UPDATE PoliceInfo " +
-                        "SET name = @name,email=@email,phone=@phone,rank=@rank,area=@area WHERE id=@id";
+                        "SET name = @name, username=@username,email=@email,phone=@phone,password=@password,gender=@gender,position=@position WHERE id=@id";
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
 
                         command.Parameters.AddWithValue("@name", policeInfo.name);
+                        command.Parameters.AddWithValue("@username", policeInfo.username);
                         command.Parameters.AddWithValue("@email", policeInfo.email);
                         command.Parameters.AddWithValue("@phone", policeInfo.phone);
-                        command.Parameters.AddWithValue("@rank", policeInfo.rank);
-                        command.Parameters.AddWithValue("@area", policeInfo.area);
+                        command.Parameters.AddWithValue("@password", policeInfo.password);
+                        command.Parameters.AddWithValue("@gender", policeInfo.gender);
+                        command.Parameters.AddWithValue("@position", policeInfo.position);
                         command.Parameters.AddWithValue("@id", policeInfo.id);
 
                         command.ExecuteNonQuery();
