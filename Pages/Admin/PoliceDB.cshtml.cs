@@ -8,6 +8,8 @@ namespace Nalish.Pages.Admin
     {
         // sob users the information store krbe
         public List<PoliceInfo> listPolice = new List<PoliceInfo>();
+   
+        public int count = 0;
         public void OnGet()
         {
             try

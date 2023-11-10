@@ -1,13 +1,14 @@
 ﻿@page
 @model Nalish.Pages.Admin.IndexModel
 @{
+    int count = 0;
 }
 <br />
 <h2>List of Polices</h2>
 <table class="table">
     <thead>
         <tr>
-            <th>Id</th>
+            <th>Serial</th>
             <th>Name</th>
             <th>Email</th>
             <th>Phone</th>
@@ -19,8 +20,10 @@
     <tbody>
         @foreach (var user in Model.listPolice)  // looping throug police list
         {
+            count += 1;
             <tr>
-                <td>@user.policeid</td>
+             
+                <td>@count</td>
                 <td>@user.name</td>
                 <td>@user.email</td>
                 <td>@user.phone</td>

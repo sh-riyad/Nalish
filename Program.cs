@@ -1,4 +1,7 @@
+using Nalish.Pages.Admin;
+
 var builder = WebApplication.CreateBuilder(args);
+
 
 // Add services to the container.
 builder.Services.AddRazorPages();

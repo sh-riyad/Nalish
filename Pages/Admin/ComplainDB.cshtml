@@ -1,0 +1,52 @@
+﻿@page
+@model Nalish.Pages.Admin.ComplainDBModel
+@{
+    int count = 0;
+}
+<br />
+<h2>List of Complains</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Serial</th>
+            <th>Type</th>
+            <th>Complain Details</th>
+            <th>Complainant Email</th>
+            <th>Incident Date</th>
+            <th>Police Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.listComplain)  // looping throug police list
+        {
+            count += 1;
+            <tr>
+                <td>@count</td>
+                <td>@item.complainType</td>
+                <td>@item.complainDetails</td>
+                <td>@item.complainantEmail</td>
+                <td>@item.incidentDate</td>
+                @if(item.policeName == null)
+                {
+                    <td>
+                        <form method="POST" >
+                            <select id="id_name" name="id_name" onchange="this.form.submit()">
+                                <option value="" disabled selected hidden>Assign Police</option>
+                                @foreach ( var name in Model.listPolice)
+                                {
+
+                                    <option value="@item.complainID-@name.name">@name.name</option>
+                                }
+                                
+                                
+                            </select>
+                        </form>
+                    </td>
+                }
+                else{
+                    <td>@item.policeName</td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

@@ -44,7 +44,7 @@ namespace Nalish.Pages.Login
                                     // Redirect to PoliceDB page if the username and password match
                                     
                                     ViewData["Module"] = "admin";
-                                    // Response.Redirect("/Admin/PoliceDB");
+                                    Response.Redirect("/Admin/PoliceDB");
                                 }
                                 else
                                 {
