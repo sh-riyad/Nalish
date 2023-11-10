@@ -36,3 +36,4 @@ C:\Users\saraw\OneDrive\Documents\Visual Studio 2022\Nalish\bin\Debug\net6.0\run
 C:\Users\saraw\OneDrive\Documents\Visual Studio 2022\Nalish\bin\Debug\net6.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\saraw\OneDrive\Documents\Visual Studio 2022\Nalish\obj\Debug\net6.0\Nalish.csproj.AssemblyReference.cache
 C:\Users\saraw\OneDrive\Documents\Visual Studio 2022\Nalish\obj\Debug\net6.0\Nalish.csproj.CopyComplete
+C:\Users\saraw\OneDrive\Documents\Visual Studio 2022\Nalish\obj\Debug\net6.0\scopedcss\Pages\Shared\_Layout-Admin.cshtml.rz.scp.css
