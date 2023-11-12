@@ -6,6 +6,15 @@ namespace Nalish.Pages.Admin
 {
     public class CreateModel : PageModel
     {
+
+        private readonly string _connectionString;
+
+        public CreateModel(IConfiguration configuration)
+        {
+            _connectionString = configuration.GetConnectionString("DefaultConnection");
+        }
+
+
         public PoliceInfo policeInfo = new PoliceInfo();
         public string errorMessage = "";
         public string successMessage = "";
@@ -39,8 +48,7 @@ namespace Nalish.Pages.Admin
             try
             {
                 // defining database path
-                string connectionString = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=Nalish;Integrated Security=True";
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(_connectionString))
                 {
                     //opening connection
                     connection.Open();

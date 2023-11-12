@@ -6,6 +6,13 @@ namespace Nalish.Pages.Admin
 {
     public class IndexModel : PageModel
     {
+        private readonly string _connectionString;
+
+        public IndexModel(IConfiguration configuration)
+        {
+            _connectionString = configuration.GetConnectionString("DefaultConnection");
+        }
+
         // sob users the information store krbe
         public List<PoliceInfo> listPolice = new List<PoliceInfo>();
    
@@ -17,7 +24,7 @@ namespace Nalish.Pages.Admin
                 // taking database connection link
                 string connectionString = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=Nalish;Integrated Security=True";
 
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(_connectionString))
                 {
                     connection.Open(); //opening the connection
                     string sql = "SELECT policeid,name,email,phone,gender,position FROM PoliceInfo"; // sql query for select data from database

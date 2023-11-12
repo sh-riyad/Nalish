@@ -7,6 +7,12 @@ namespace Nalish.Pages.Admin
 {
     public class EditModel : PageModel
     {
+        private readonly string _connectionString;
+
+        public EditModel(IConfiguration configuration)
+        {
+            _connectionString = configuration.GetConnectionString("DefaultConnection");
+        }
 
         public PoliceInfo policeInfo = new PoliceInfo();
         public string errorMessage = "";
@@ -17,11 +23,9 @@ namespace Nalish.Pages.Admin
 
             try
             {
-                // defining sql connection path
-                string connectionString = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=Nalish;Integrated Security=True";
 
                 // creating sql connection
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(_connectionString))
                 {
                     connection.Open();
 
@@ -73,8 +77,7 @@ namespace Nalish.Pages.Admin
             }
             try
             {
-                string connectionString = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=Nalish;Integrated Security=True";
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(_connectionString))
                 {
                     connection.Open();
                     string sql = "UPDATE PoliceInfo " +

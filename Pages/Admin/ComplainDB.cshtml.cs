@@ -7,9 +7,15 @@ namespace Nalish.Pages.Admin
     public class ComplainDBModel : PageModel
     {
         string errorMessage = "";
-        // taking database connection link
-        string connectionString = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=Nalish;Integrated Security=True";
-        // sob users the information store krbe
+
+    private readonly string _connectionString;
+        private readonly string _errorRedirectPath = "/Admin/ComplainDB";
+
+        public ComplainDBModel(IConfiguration configuration)
+        {
+            _connectionString = configuration.GetConnectionString("DefaultConnection");
+        }
+
         public List<ComplainInfo> listComplain = new List<ComplainInfo>();
         public List<PoliceInfo> listPolice = new List<PoliceInfo>();
         
@@ -17,7 +23,7 @@ namespace Nalish.Pages.Admin
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(_connectionString))
                 {
                     connection.Open(); //opening the connection
                     string sql = "SELECT * FROM ComplainInfo"; // sql query for select data from database
@@ -43,7 +49,7 @@ namespace Nalish.Pages.Admin
                                 {
                                     complainInfo.policeName = null;
                                 }
-
+                                complainInfo.complainStatus= reader.GetString(6);
 
                                 listComplain.Add(complainInfo); // add every police info into list
                             }
@@ -69,7 +75,9 @@ namespace Nalish.Pages.Admin
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Exception: " + ex.ToString());
+                Console.WriteLine($"Exception: {ex}");
+                // Log the exception or display an error message to the user
+                RedirectToPage(_errorRedirectPath);
             }
         }
         public void onPost()
@@ -85,9 +93,14 @@ namespace Nalish.Pages.Admin
                 complainID = values[0];
                 policeName = values[1];
             }
+            if (complainID.Length == 0 || policeName.Length == 0)
+            {
+                errorMessage = "All the fields are required";
+                return;
+            }
             try
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(_connectionString))
                 {
                     connection.Open();
                     string sql_assign = "UPDATE ComplainInfo " +
@@ -96,7 +109,7 @@ namespace Nalish.Pages.Admin
                     {
 
                         command.Parameters.AddWithValue("@policeName", policeName);
-                        command.Parameters.AddWithValue("@complainID", complainID);
+                        // command.Parameters.AddWithValue("@complainID", complainID);
 
                         command.ExecuteNonQuery();
                     }
@@ -124,7 +137,7 @@ namespace Nalish.Pages.Admin
         public string complainantEmail;
         public string incidentDate;
         public string policeName;
-        
+        public string complainStatus;
     }
     
 }
