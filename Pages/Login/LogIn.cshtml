@@ -23,6 +23,7 @@
 	<div class="login_form-container login_sign-in-container">
 		<form class="login_form" method="POST">
 			<h1>Sign in</h1>
+			
 			<div class="login_social-container">
 				<a href="#" class="social login_a"><i class="fab fa-facebook-f"></i></a>
 				<a href="#" class="social login_a"><i class="fab fa-google-plus-g"></i></a>
@@ -30,7 +31,15 @@
 			</div>
 			<span class="login_span">or use your account</span>
 			<input class="login_input" type="text" name="username" placeholder="username"/>
+			@if (!string.IsNullOrEmpty(Model.usernameError))
+			{
+				<p class="login_error"> @Model.usernameError </p>
+			}
 			<input class="login_input" type="password" name = "password" placeholder="Password" />
+			@if (!string.IsNullOrEmpty(Model.passwordError))
+			{
+				<p class="login_error"> @Model.passwordError </p>
+			}
 			<a class="login_a" href="#">Forgot your password?</a>
 			<button class="login_button">Sign In</button>
 		</form>

@@ -8,7 +8,7 @@ namespace Nalish.Pages.Admin
     {
         string errorMessage = "";
 
-    private readonly string _connectionString;
+        private readonly string _connectionString;
         private readonly string _errorRedirectPath = "/Admin/ComplainDB";
 
         public ComplainDBModel(IConfiguration configuration)
@@ -18,7 +18,7 @@ namespace Nalish.Pages.Admin
 
         public List<ComplainInfo> listComplain = new List<ComplainInfo>();
         public List<PoliceInfo> listPolice = new List<PoliceInfo>();
-        
+
         public void OnGet()
         {
             try
@@ -44,12 +44,14 @@ namespace Nalish.Pages.Admin
                                 if (!reader.IsDBNull(5))
                                 {
                                     complainInfo.policeName = reader.GetString(5);
+                                    complainInfo.complainStatus = "Assigned";
                                 }
                                 else
                                 {
                                     complainInfo.policeName = null;
+                                    complainInfo.complainStatus = "Pending";
                                 }
-                                complainInfo.complainStatus= reader.GetString(6);
+                                
 
                                 listComplain.Add(complainInfo); // add every police info into list
                             }
@@ -65,7 +67,7 @@ namespace Nalish.Pages.Admin
                                 PoliceInfo policeInfo = new PoliceInfo();
                                 policeInfo.policeid = "" + reader.GetInt32(0);
                                 policeInfo.name = reader.GetString(1);
-                                
+
 
                                 listPolice.Add(policeInfo); // add every police info into list
                             }
@@ -80,50 +82,58 @@ namespace Nalish.Pages.Admin
                 RedirectToPage(_errorRedirectPath);
             }
         }
-        public void onPost()
+        public IActionResult OnPostSubmitForm()
         {
-            string selectedValue = Request.Form["id_name"];
-            string complainID = "";
-            string policeName = "";
-             
-            if (!string.IsNullOrEmpty(selectedValue))
-            {
-                // Split the selected value to get complainID and policeName
-                string[] values = selectedValue.Split('-');
-                complainID = values[0];
-                policeName = values[1];
-            }
-            if (complainID.Length == 0 || policeName.Length == 0)
-            {
-                errorMessage = "All the fields are required";
-                return;
-            }
             try
             {
-                using (SqlConnection connection = new SqlConnection(_connectionString))
+                string selectedValue = Request.Form["id_name"];
+                string complainID = "";
+                string policeName = "";
+
+                if (!string.IsNullOrEmpty(selectedValue))
                 {
-                    connection.Open();
-                    string sql_assign = "UPDATE ComplainInfo " +
-                        "SET policeName = @policeName WHERE complainID=@complainID";
-                    using (SqlCommand command = new SqlCommand(sql_assign, connection))
+                    // Split the selected value to get complainID and policeName
+                    string[] values = selectedValue.Split('-');
+                    complainID = values[0];
+                    policeName = values[1];
+                }
+                if (complainID.Length == 0 || policeName.Length == 0)
+                {
+                    errorMessage = "All the fields are required";
+                    return RedirectToPage("/Admin/ComplainDB"); ;
+                }
+                try
+                {
+                    using (SqlConnection connection = new SqlConnection(_connectionString))
                     {
+                        connection.Open();
+                        string sql_assign = "UPDATE ComplainInfo " +
+                            "SET policeName = @policeName WHERE complainID=@complainID";
+                        using (SqlCommand command = new SqlCommand(sql_assign, connection))
+                        {
 
-                        command.Parameters.AddWithValue("@policeName", policeName);
-                        // command.Parameters.AddWithValue("@complainID", complainID);
+                            command.Parameters.AddWithValue("@policeName", policeName);
+                            command.Parameters.AddWithValue("@complainID", complainID);
 
-                        command.ExecuteNonQuery();
+                            command.ExecuteNonQuery();
+                        }
+
                     }
+                    return RedirectToPage("/Admin/ComplainDB"); ;
 
                 }
-
+                catch (Exception ex)
+                {
+                    errorMessage = ex.Message;
+                    return RedirectToPage("/Admin/ComplainDB"); ;
+                }
             }
             catch (Exception ex)
             {
-                errorMessage = ex.Message;
-                return;
+                Console.WriteLine($"Exception: {ex}");
+                // Log the exception or display an error message to the user
+                return RedirectToPage(_errorRedirectPath);
             }
-            Response.Redirect("/Admin/ComplainDB");
-
         }
     }
 
@@ -139,5 +149,5 @@ namespace Nalish.Pages.Admin
         public string policeName;
         public string complainStatus;
     }
-    
+
 }

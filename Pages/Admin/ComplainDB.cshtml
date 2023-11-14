@@ -30,7 +30,7 @@
                 @if(item.policeName == null)
                 {
                     <td>
-                        <form method="POST" >
+                        <form method="POST" asp-page-handler="SubmitForm">
                             <select id="id_name" name="id_name" onchange="this.form.submit()">
                                 <option value="" disabled selected hidden>Assign Police</option>
                                 @foreach ( var name in Model.listPolice)

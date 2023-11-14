@@ -1,13 +1,29 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Data.SqlClient;
+using System.Net.NetworkInformation;
+
+
 
 namespace Nalish.Pages.Login
 {
     public class LogInModel : PageModel
     {
+
+
         public string module = "";
+        private readonly string _connectionString;
+
+        public LogInModel(IConfiguration configuration)
+        {
+            _connectionString = configuration.GetConnectionString("DefaultConnection");
+        }
+
+        public string usernameError = "";
+        public string passwordError = "";
+
         public void OnPost()
         {
             string inputUsername = Request.Form["username"];
@@ -16,9 +32,8 @@ namespace Nalish.Pages.Login
             try
             {
                 // Database connection string
-                string connectionString = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=Nalish;Integrated Security=True";
 
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(_connectionString))
                 {
                     connection.Open(); // Open the connection
 
@@ -42,20 +57,20 @@ namespace Nalish.Pages.Login
                                 if (inputPassword == storedPassword)
                                 {
                                     // Redirect to PoliceDB page if the username and password match
-                                    
+
                                     ViewData["Module"] = "admin";
                                     Response.Redirect("/Admin/PoliceDB");
                                 }
                                 else
                                 {
                                     // Display a message if the password is incorrect
-                                    ViewData["ErrorMessage"] = "Incorrect password";
+                                    passwordError = "Incorrect password";
                                 }
                             }
                             else
                             {
                                 // Display a message if the username is not found
-                                ViewData["ErrorMessage"] = "Username not found";
+                                usernameError = "Username not found";
                             }
                         }
                     }
